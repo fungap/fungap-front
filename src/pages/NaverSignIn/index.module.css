@@ -1,0 +1,14 @@
+.btn {
+  width: auto;
+  height: 64px;
+  margin: 10px 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  background: url('../../assets/btn_naver.png') no-repeat center;
+  background-size: contain;
+}
+.btn a,
+.btn img {
+  display: none;
+}

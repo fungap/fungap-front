@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { userActions } from '../../redux/modules/user';
-import { Button } from '../../elements';
+import style from './google.module.css';
 
 const GoogleSignIn = props => {
   const dispatch = useDispatch();
@@ -59,9 +59,8 @@ const GoogleSignIn = props => {
   }, []);
 
   return (
-    <div ref={googleLoginBtn} id='customBtn' className='customGPlusSignIn'>
-      <span className='icon'></span>
-      <Button className='buttonText'>Login with Google</Button>
+    <div ref={googleLoginBtn} id='customBtn' className={style.wrap}>
+      <button className={style.btn}>카카오 로그인 버튼</button>
     </div>
   );
 };

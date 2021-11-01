@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { userActions } from '../../redux/modules/user';
+import style from './naver.module.css';
 
 const NaverSignIn = () => {
   const { naver } = window;
@@ -25,7 +26,7 @@ const NaverSignIn = () => {
     initializeNaverLogin();
   }, []);
 
-  return <div id='naverIdLogin'></div>;
+  return <div id='naverIdLogin' className={style.btn}></div>;
 };
 
 export default NaverSignIn;
