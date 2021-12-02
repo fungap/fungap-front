@@ -10,6 +10,7 @@ import {
   Modal,
   ContentFt,
   Comments,
+  MbtiTag,
   ActionCompleteMessage,
 } from '@components';
 //css
