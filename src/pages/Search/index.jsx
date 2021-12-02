@@ -34,7 +34,7 @@ const Search = props => {
         </div>
       ) : (
         <>
-          <h3>펀캡 추천 검색어</h3>
+          <h3>펀갭 추천 검색어</h3>
           <RecommendList />
           <div className={style.launching}>
             <div name='아이콘이미지' />
