@@ -20,16 +20,20 @@ import defaultImg from '@assets/background/profile_default.webp';
 
 const GameDetail = props => {
   const dispatch = useDispatch();
-  const gameId = parseInt(props.match.params.id); // 투표 게시글 아이디
-  const [visible, setVisible] = useState(false); // modal 컴포넌트 보이는 여부
-  const [modalTitle, setModalTitle] = useState(''); // modal 컴포넌트 제목
-  const [modalDesc, setModalDesc] = useState('');
-  const [modalRightColor, setModalRightColor] = useState('');
+  const gameId = parseInt(props.match.params.id); // 게임 게시글 아이디
+
+  // modal 컴포넌트를 컨트롤하기 위한 state
+  const [visible, setVisible] = useState(false); // 보이는 여부
+  const [modalTitle, setModalTitle] = useState(''); // 제목
+  const [modalDesc, setModalDesc] = useState(''); // 설명
+  const [modalRightColor, setModalRightColor] = useState(''); // 오른쪽 버튼 색
+
   const isLogin = useSelector(state => state.user.is_login); // 로그인 여부
   const userName = useSelector(state => state.user.user.nickname); // 사용자 닉네임
-  const userMbti = useSelector(state => state.user.user.user_mbti);
-  const game = useSelector(state => state.game.game);
+  const userMbti = useSelector(state => state.user.user.user_mbti); // 사용자 mbti
+  const game = useSelector(state => state.game.game); // 사용할 game 데이터
 
+  //질문을 선택하지 않고 투표하기 버튼을 누른 경우 알림이 뜸.
   const [alarm, setAlarm] = React.useState(false);
 
   React.useEffect(() => {
@@ -108,7 +112,9 @@ const GameDetail = props => {
                 alt='프로필이미지'
               />
               <div>
-                <span className={style.userName}>{game?.nickname}</span>
+                <span className={style.userName}>
+                  {game?.nickname} <MbtiTag mbti={userMbti}>{userMbti}</MbtiTag>
+                </span>
                 <span>2021.11.20</span>
               </div>
             </div>
