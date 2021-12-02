@@ -11,8 +11,8 @@ import style from './adminManage.module.css';
 
 const AdminPostManage = props => {
   const dispatch = useDispatch();
-  let postId = props.match.params.id;
-  let isEdit = postId ? true : false; // 게시글 수정, 작성
+  const postId = props.match.params.id;
+  const isEdit = postId ? true : false; // 게시글 수정, 작성
   // image: 업로드한 이미지
   const image = useSelector(state => state.post.postImg);
 
@@ -21,8 +21,8 @@ const AdminPostManage = props => {
   // 수정한 게시글은 post 모듈의 editPost에 저장.
   // 미리보기 페이지에서 뒤로 돌아올 때, 작성하는 중인 게시글이 있으면 defaultPost를 보여준다.
   // 수정하는 중인 게시글이 있으면 defaultEditPost를 보여준다.
-  let defaultPost = useSelector(state => state.post.post);
-  let defaultEditPost = useSelector(state => state.post.editPost);
+  const defaultPost = useSelector(state => state.post.post);
+  const defaultEditPost = useSelector(state => state.post.editPost);
   const titleRef = useRef('');
   const descRef = useRef('');
   const mbtiList = [
@@ -45,8 +45,8 @@ const AdminPostManage = props => {
   ];
 
   const saveData = () => {
-    const title = titleRef.current.value.trimEnd();
-    const desc = descRef.current.value.trimEnd();
+    const title = titleRef.current.value.trim();
+    const desc = descRef.current.value.trim();
     const img = image;
     const mbtiDescObject = {};
 
@@ -65,13 +65,11 @@ const AdminPostManage = props => {
 
     // mbti별 내용을 mbtiDescObject 객체에 저장하기
     mbtiList.forEach((mbti, index) => {
-      if (mbti.ref.current.value.trimEnd() === '') {
+      if (mbti.ref.current.value.trim() === '') {
         window.alert(`${mbti.key}의 내용을 입력해주세요!`);
         return false;
       } else {
-        mbtiDescObject[
-          mbti.key.toLowerCase()
-        ] = mbti.ref.current.value.trimEnd();
+        mbtiDescObject[mbti.key.toLowerCase()] = mbti.ref.current.value.trim();
       }
     });
 
