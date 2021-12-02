@@ -11,7 +11,7 @@ import style from './admin.module.css';
 
 const Admin = props => {
   const dispatch = useDispatch();
-  let defaultPost = useSelector(state => state.post.post);
+  const defaultPost = useSelector(state => state.post.post);
   let result;
 
   const handleClick = () => {
