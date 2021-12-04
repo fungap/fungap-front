@@ -5,15 +5,13 @@ import { userActions } from '@redux/modules/user';
 // css
 import style from './kakao.module.css';
 
-const { Kakao } = window;
-
 const KakaoSignIn = props => {
   const dispatch = useDispatch();
 
   const handClick = e => {
     e.preventDefault();
 
-    Kakao.Auth.login({
+    window.Kakao.Auth.login({
       success: function(authObj) {
         dispatch(userActions.signinKakaoDB(authObj));
       },

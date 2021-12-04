@@ -5,15 +5,13 @@ import { userActions } from '@redux/modules/user';
 // css
 import style from './naver.module.css';
 
-const { naver } = window;
-
 const NaverSignIn = () => {
   const dispatch = useDispatch();
   const NAVER_CALLBACK_URL = process.env.REACT_APP_NAVER_CALLBACK_URL;
   const NAVER_CLIENT_ID = process.env.REACT_APP_NAVER_API_KEY;
 
   const initializeNaverLogin = () => {
-    const naverLogin = new naver.LoginWithNaverId({
+    const naverLogin = new window.naver.LoginWithNaverId({
       clientId: NAVER_CLIENT_ID,
       callbackUrl: NAVER_CALLBACK_URL,
       isPopup: false,
@@ -30,7 +28,14 @@ const NaverSignIn = () => {
   };
 
   useEffect(() => {
-    initializeNaverLogin();
+    const naverScript = document.createElement('script');
+    naverScript.src =
+      'https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js';
+    document.head.appendChild(naverScript);
+
+    naverScript.onload = () => {
+      initializeNaverLogin();
+    };
   }, []);
 
   return (
