@@ -9,8 +9,8 @@
 * 사이트 링크: <https://fungap.shop>
 
 ## 🧑🏻‍💻 팀 구성
-- Frontend : 조성민(ENFJ), 임동건(INFJ), 김세연(INFP)
-- Backend : 전은규(ENFP), 신성웅(INTP), 오정민(ISTP)
+- Frontend : [조성민](https://github.com/developer-asher)(ENFJ), [임동건](https://github.com/Ldonggun)(INFJ), [김세연](https://github.com/happyKale)(INFP)
+- Backend : [전은규](https://github.com/stravinest)(ENFP), [신성웅](https://github.com/shinsw627)(INTP), [오정민](https://github.com/criminal415)(ISTP)
 - Designer : 김민경(ESTJ), 김은우(ESFJ)
 
 ## 🎨 아키텍쳐
