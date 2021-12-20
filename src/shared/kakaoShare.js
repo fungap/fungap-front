@@ -1,8 +1,15 @@
-const { Kakao } = window;
+const kakaoScript = document.createElement('script');
+
+kakaoScript.src = 'https://developers.kakao.com/sdk/js/kakao.js';
+document.head.appendChild(kakaoScript);
+
+kakaoScript.onload = () => {
+  window.Kakao.init(process.env.REACT_APP_KAKAO_API_KEY);
+};
 
 const createKakaoButton = value => {
-  if (Kakao) {
-    const kakao = Kakao;
+  if (window.Kakao) {
+    const kakao = window.Kakao;
 
     kakao.Link.createDefaultButton({
       // Render 부분 id=kakao-link-btn 을 찾아 그부분에 렌더링을 합니다
