@@ -3,7 +3,7 @@ import style from './gameList.module.css';
 import { history } from '../../redux/configureStore';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { Goback, Modal, LikeButton, SortContents } from '../../components';
+import { Goback, Modal, Game, SortContents } from '../../components';
 import { gameActions } from '../../redux/modules/game';
 
 const GameList = () => {
@@ -42,35 +42,7 @@ const GameList = () => {
         <div className={style.listContainer}>
           {/* 투표 */}
           {gameList?.map((game, index) => {
-            return (
-              <div key={index} className={style.gameContainer}>
-                <div
-                  onClick={() => {
-                    history.push(`/game/${game.game_id}`);
-                  }}
-                  className={style.gameInnerContainer}
-                >
-                  <p className={style.gameTitle}>{game.game_title}</p>
-                  <span>
-                    조회수
-                    <span className={style.blank} /> {game?.game_view_count}
-                  </span>
-                  <span className={style.gameParticipation}>
-                    총 참여수 <span className={style.blank} />
-                    {game?.participation_count}
-                  </span>
-                  <span>{game?.nickname}</span>
-                </div>
-                <div className={style.likeButton}>
-                  <LikeButton
-                    mode='game'
-                    board_id={game?.game_id}
-                    like_count={game?.like_count}
-                    like_state={game?.like_state}
-                  />
-                </div>
-              </div>
-            );
+            return <Game game={game} />;
           })}
         </div>
         {visible && (

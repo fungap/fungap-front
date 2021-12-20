@@ -34,6 +34,7 @@ import ActionCompleteMessage from './ActionCompleteMessage';
 import GameMbtiChart from './GameMbtiChart';
 import GameParticipateChart from './GameParticipateChart';
 import GameChartBox from './GameChartBox';
+import Game from './Game';
 import ContentsRow from './ContentsRow';
 import ContentsRowItem from './ContentsRowItem';
 import ContentsRowTitle from './ContentsRowTitle';
@@ -87,6 +88,7 @@ export {
   GameMbtiChart,
   GameParticipateChart,
   GameChartBox,
+  Game,
   ContentsRow,
   ContentsRowItem,
   ContentsRowTitle,
