@@ -10,6 +10,7 @@ import {
   Goback,
   SearchBar,
   RecommendList,
+  Game,
 } from '@components';
 // customhook
 import usePostList from '@hook/usePostList';
@@ -18,7 +19,10 @@ import style from './search.module.css';
 
 const Search = props => {
   const { postList } = usePostList();
-  const searchList = useSelector(state => state.post.searchList);
+  let searchList = useSelector(state => state.post.searchList);
+  searchList = searchList === '' ? null : searchList;
+  const gameList = searchList?.filter(item => item?.tags[0] === 'games');
+  const boardList = searchList?.filter(item => item?.tags[0] === 'boards');
 
   const handleClick = () => history.push('/contents');
 
@@ -26,15 +30,32 @@ const Search = props => {
     <>
       <Goback>검색</Goback>
       <SearchBar />
-      {searchList.length !== 0 ? (
-        <div className={style.grid}>
-          {searchList.map((post, index) => {
-            return <Post direction='column' key={post.board_id} {...post} />;
-          })}
+      {searchList && searchList?.length !== 0 ? (
+        <div>
+          {gameList.length !== 0 && (
+            <div>
+              <h2 className={style.searchListTtitle}>밸런스 게임</h2>
+              {gameList?.map((game, index) => {
+                return <Game game={game} />;
+              })}
+            </div>
+          )}
+          {boardList.length !== 0 && (
+            <div>
+              <h2 className={style.searchListTtitle}>MBTI 유형별 콘텐츠</h2>
+              <div className={style.grid}>
+                {boardList.map((post, index) => {
+                  return (
+                    <Post direction='column' key={post.board_id} {...post} />
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       ) : (
         <>
-          <h3>펀캡 추천 검색어</h3>
+          <h3>펀갭 추천 검색어</h3>
           <RecommendList />
           <div className={style.launching}>
             <div name='아이콘이미지' />

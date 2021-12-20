@@ -8,14 +8,15 @@ import { Goback, MbtiDescList } from '@components';
 import style from './adminPreview.module.css';
 
 const AdminPostPreview = props => {
-  const postId = props.match.params.id;
   const dispatch = useDispatch();
+  const postId = props.match.params.id;
+  const isEdit = postId ? true : false;
   const { post, editPost, postImg: image } = useSelector(state => state.post);
   const mbtiList = Object.entries(post?.mbti);
   const editMbtiList = Object.entries(editPost?.board_content);
 
   const handleClick = () => {
-    if (postId) {
+    if (isEdit) {
       const data = {
         board_title: editPost.board_title,
         board_image: image,
@@ -38,13 +39,13 @@ const AdminPostPreview = props => {
       <div className={style.container}>
         <img src={image} alt='게시글 이미지'></img>
         <h3 className={style.title}>
-          {postId ? editPost.board_title : post.title}
+          {isEdit ? editPost.board_title : post.title}
         </h3>
         <span className={style.like}>0</span>
         <p className={style.contents}>
-          {postId ? editPost.board_desc : post.desc}
+          {isEdit ? editPost.board_desc : post.desc}
         </p>
-        {postId ? (
+        {isEdit ? (
           <MbtiDescList list={editMbtiList} />
         ) : (
           <MbtiDescList list={mbtiList} />
@@ -54,7 +55,7 @@ const AdminPostPreview = props => {
             className={style.button}
             onClick={handleClick}
           >
-            {postId ? '수정하기' : '저장하기'}
+            {isEdit ? '수정하기' : '저장하기'}
           </button>
         </div>
       </div>
