@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // redux
 import { useDispatch } from 'react-redux';
 import { postActions } from '@redux/modules/post';
@@ -28,6 +28,12 @@ const SearchBar = prop => {
 
     dispatch(postActions.searchPostDB(search));
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(postActions.searchPost(''));
+    };
+  }, []);
 
   return (
     <form onSubmit={handleSubmit}>
