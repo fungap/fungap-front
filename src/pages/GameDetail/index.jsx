@@ -114,7 +114,8 @@ const GameDetail = props => {
               />
               <div>
                 <span className={style.userName}>
-                  {game?.nickname} <MbtiTag mbti={userMbti}>{userMbti}</MbtiTag>
+                  {game?.nickname}{' '}
+                  <MbtiTag mbti={game?.user_mbti}>{game?.user_mbti}</MbtiTag>
                 </span>
                 <span>2021.11.20</span>
               </div>
